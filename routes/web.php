@@ -3,8 +3,11 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProfilesController;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +34,13 @@ Route::resource('/products',ProductsController::class);
 
 Route::resource('/categories', CategoryController::class);
 Route::resource('/brands', BrandController::class);
+Route::resource('/profiles', ProfilesController::class);
+
+//Cart
+Route::get('/carts/add/{product}',[CartsController::class,'addToCart']);
+Route::get('/carts/remove/{product}',[CartsController::class,'removeFromCart']);
+Route::get('/carts/show/',[CartsController::class,'show']);
+
 
 Auth::routes();
 

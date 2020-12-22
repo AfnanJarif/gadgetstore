@@ -24,6 +24,8 @@ class HomeController extends Controller
     public function index()
     {
         $user = auth()->user();
+        if ($user->profile->image==null)
+        $user->profile->image = "/images/svg/noimage.svg";
         return view('home',compact('user'));
     }
 }
